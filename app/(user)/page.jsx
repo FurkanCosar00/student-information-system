@@ -1,4 +1,4 @@
-import { signOut } from "../login/acitons";
+import { signOut } from "../login/actions";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 

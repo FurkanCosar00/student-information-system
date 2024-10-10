@@ -1,4 +1,4 @@
-import { signOut } from "@/app/login/acitons";
+import { signOut } from "@/app/login/actions";
 
 export default async function AdminPage(){
     return(

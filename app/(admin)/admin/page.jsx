@@ -6,9 +6,9 @@ export default async function AdminPage() {
     const supabase = createClient();
 
     let { data: students } = await supabase
-        .from('students')
-        .select('*')
-    console.log(students)
+    .from('students')
+    .select('*')
+
     return (
         <div>
             <h1>admin sayfası</h1>
@@ -40,6 +40,7 @@ export default async function AdminPage() {
                     </form>
                 </div>
             )}
+
             <form className="addStudent">
                 <label htmlFor="firstName">firstname:</label>
                 <input id="firstName" name="firstName" type="firstName" required />

@@ -1,7 +1,7 @@
 "use server"
 
 import { createClient } from "@/utils/supabase/server";
-import { redirect } from "next/dist/server/api-utils";
+import { redirect } from "next/navigation";
 
 export async function addExamGrade(formData) {
   const supabase = createClient();
@@ -26,7 +26,9 @@ export async function deleteStudent(formData) {
   const { error } = await supabase
   .from('students')
   .delete()
-  .eq('id', studentId)  
+  .eq('id', studentId)
+
+  redirect("/admin")
 }
 
 export async function addStudent(formData) {
@@ -52,4 +54,6 @@ export async function addStudent(formData) {
         role: "student"
       }
   ]);
+
+  redirect("/admin")
 }

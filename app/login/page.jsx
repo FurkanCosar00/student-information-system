@@ -1,27 +1,20 @@
-import { login, signup } from './actions'
+"use client"
+
+import LoginForm from './loginform';
+import SignupForm from './signupform';
+import { useState } from 'react'
 
 export default function LoginPage() {
-  return (
-    <>
-      <form className="signup">
-        <label htmlFor="firstName">firstname:</label>
-        <input id="firstName" name="firstName" type="firstName" required />
-        <label htmlFor="lastName">lastname:</label>
-        <input id="lastName" name="lastName" type="lastName" required />
-        <label htmlFor="email">Email:</label>
-        <input id="email" name="email" type="email" required />
-        <label htmlFor="password">Password:</label>
-        <input id="password" name="password" type="password" required />
-        <button formAction={signup}>Sign up</button>
-      </form>
+  const [signOrLogin, setSignOrLogin] = useState("login");
 
-      <form className="login">
-        <label htmlFor="email">Email:</label>
-        <input id="email" name="email" type="email" required />
-        <label htmlFor="password">Password:</label>
-        <input id="password" name="password" type="password" required />
-        <button formAction={login}>Log in</button>
-      </form>
-    </>
+  return (
+    <div className="loginPage">
+      <ul>
+        <li><button onClick={() => setSignOrLogin("login")}>login</button></li>
+        <li><button onClick={() => setSignOrLogin("signup")}>signup</button></li>
+      </ul>
+
+      {signOrLogin === "login" ? <LoginForm /> : <SignupForm />}
+    </div>
   )
 }

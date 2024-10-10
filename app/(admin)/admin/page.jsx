@@ -34,6 +34,10 @@ export default async function AdminPage() {
                         <p>{((x.firstMidterm) + (x.secondMidterm) + (x.finalExam)) / 3}</p>
                     </form>
 
+                    <form action={deleteStudent}>
+                        <input type="hidden" name="studentId" value={x.id} />
+                        <button>öğrenciyi sil</button>
+                    </form>
                 </div>
             )}
         </div>

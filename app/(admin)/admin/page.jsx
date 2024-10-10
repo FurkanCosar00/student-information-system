@@ -1,5 +1,6 @@
 import { signOut } from "@/app/login/actions";
 import { createClient } from "@/utils/supabase/server";
+import { addExamGrade } from "./actions";
 
 export default async function AdminPage() {
     const supabase = createClient();

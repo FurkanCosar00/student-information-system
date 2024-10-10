@@ -1,13 +1,13 @@
 import { signOut } from "@/app/login/actions";
 import { createClient } from "@/utils/supabase/server";
-import { addExamGrade } from "./actions";
+import { addExamGrade, deleteStudent } from "./actions";
 
 export default async function AdminPage() {
     const supabase = createClient();
 
     let { data: students } = await supabase
-    .from('students')
-    .select('*')
+        .from('students')
+        .select('*')
     console.log(students)
     return (
         <div>
@@ -40,6 +40,17 @@ export default async function AdminPage() {
                     </form>
                 </div>
             )}
+            <form className="addStudent">
+                <label htmlFor="firstName">firstname:</label>
+                <input id="firstName" name="firstName" type="firstName" required />
+                <label htmlFor="lastName">lastname:</label>
+                <input id="lastName" name="lastName" type="lastName" required />
+                <label htmlFor="email">Email:</label>
+                <input id="email" name="email" type="email" required />
+                <label htmlFor="password">Password:</label>
+                <input id="password" name="password" type="password" required />
+                <button formAction={addStudent}>Sign up</button>
+            </form>
         </div>
     )
 }

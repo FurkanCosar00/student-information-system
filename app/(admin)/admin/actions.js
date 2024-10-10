@@ -23,3 +23,28 @@ export async function deleteStudent(formData) {
   .delete()
   .eq('id', studentId)  
 }
+
+export async function addStudent(formData) {
+  const supabase = createClient()
+  const data = {
+    email: formData.get('email'),
+    password: formData.get('password'),
+    options: {
+      data: {
+        role: "student"
+      }
+    }
+  }
+
+  const { error: insertError } = await supabase
+  .from('students')
+  .insert([
+      { 
+        firstName: formData.get("firstName"),
+        lastName: formData.get("lastName"),
+        email: formData.get("email"),
+        password: formData.get("password"),
+        role: "student"
+      }
+  ]);
+}

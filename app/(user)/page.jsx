@@ -10,6 +10,12 @@ export default async function Home() {
     redirect("/admin")
   }
 
+  const { data } = await supabase
+  .from('students')
+  .select('*')
+  .eq('email', user.email)
+  .single();
+
   return (
     <div>
       <h1>user home page</h1>
@@ -17,6 +23,13 @@ export default async function Home() {
       <form action={signOut}>
         <button>sign out</button>
       </form>
+
+      <p>{data.firstName}</p>
+      <p>{data.lastName}</p>
+      <p>{data.email}</p>
+      <p>{data.firstMidterm}</p>
+      <p>{data.secondMidterm}</p>
+      <p>{data.finalExam}</p>
     </div>
   );
 }

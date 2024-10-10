@@ -1,4 +1,3 @@
-import { signOut } from "../login/actions";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 
@@ -19,10 +18,6 @@ export default async function Home() {
   return (
     <div>
       <h1>user home page</h1>
-
-      <form action={signOut}>
-        <button>sign out</button>
-      </form>
 
       <p>{data.firstName}</p>
       <p>{data.lastName}</p>
